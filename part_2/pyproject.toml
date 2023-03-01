@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "part-2"
+version = "0.1.0"
+description = ""
+authors = ["AndrewCheUA <andreicheban@gmail.com>"]
+readme = "README.md"
+packages = [{include = "part_2"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.7"
+psycopg2 = "^2.9.5"
+pillow = "^9.4.0"
+sqlalchemy = "^2.0.4"
+alembic = "^1.9.4"
+django-environ = "^0.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

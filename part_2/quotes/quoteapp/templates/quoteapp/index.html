@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Organizer</title>
+    <link rel="stylesheet" href="http://quotes.toscrape.com/static/bootstrap.min.css">
+</head>
+<body>
+<main class="container">
+
+    <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url 'quoteapp:quote' %}" role="button">Add quote</a></li>
+            <li><a href="{% url 'quoteapp:author' %}" role="button">Add author</a></li>
+            <li><a href="{% url 'quoteapp:tag' %}" role="button">Add tag</a></li>
+        </ul>
+        <ul>
+            <li>Welcome <b>{{ user.username }}!</b></li>
+            <li><a href="{% url 'users:profile' %}" role="button">Profile</a></li>
+            <li><a href="{% url 'users:logout' %}" role="button">Logout</a></li>
+        </ul>
+        {% else %}
+        <ul>
+            <li><a href="{% url 'users:signup' %}" role="button">Sign Up</a></li>
+            <li><a href="{% url 'users:login' %}" role="button">Login</a></li>
+        </ul>
+
+        {% endif %}
+    </nav>
+    {% for quote in quotes %}
+    <div class="card">
+        <div class="card-body">
+            <a href="author/{{ quote.show_quote_author }}">{{ quote.author }}</a>
+            <p class="card-text">{{ quote.text }}</p>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <ul>
+        <li>
+            <a href="{% url 'quoteapp:delete' quote.id %}" role="button" class="contrast"> Delete quote </a>
+        </li>
+    </ul>
+    {% endif %}
+    {% endfor %}
+</main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Note information</title>
+    <link rel="stylesheet" href="http://quotes.toscrape.com/static/bootstrap.min.css">
+    <link rel="stylesheet" href="http://quotes.toscrape.com/static/main.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quoteapp/style.css' %}">
+</head>
+<body>
+<main class="container">
+    <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+            <li><a href="/" role="button"> To the main page </a></li>
+        </ul>
+    </nav>
+    {% block content %} {% endblock %}
+</main>
+</body>
+</html>
